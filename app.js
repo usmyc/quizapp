@@ -13,6 +13,16 @@ form.addEventListener("submit", (e) => {
       score += 25;
     }
   });
-  resultdiv.className -= 'd-none';
-  result.innerText = "%" + score;
+  scrollTo(0, 0);
+  resultdiv.classList.remove("d-none");
+  //Interval
+  let output = 0;
+  const timer = setInterval(() => {
+    result.textContent = `${output}%`;
+    if (output === score) {
+      clearInterval(timer);
+    } else {
+      output++;
+    }
+  }, 10);
 });
